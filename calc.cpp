@@ -96,114 +96,116 @@ int main()
 
                                 error();
                         }
+
+                        //Sends error if a letter is entered
+                        else if (isalpha(next))
+                        {
+
+                                error();
+                        }
                 }
-                //Sends error if a letter is entered
-                else if (isalpha(next))
+                if(collec.size() >= 2){
+                }
+                //Prints out the stack
+                math.print();
+                return 0;
+        }
+
+
+        //function definitions
+
+        //add function: adds two values and pushs to stack
+        void add(double num1, double num2)
+        {
+
+                double result;
+                popNumbers(num1, num2);
+                result = num1 + num2;
+                math.push(result);
+        }
+        //subtract function: subtracts two values and pushes to stack
+        void subtract(double num1, double num2)
+        {
+
+                double result;
+                popNumbers(num1, num2);
+                result = num1 - num2;
+                math.push(result);
+        }
+        //multiply function
+        void multiply(double num1, double num2)
+        {
+
+                double result;
+                popNumbers(num1, num2);
+                result = num1 * num2;
+                math.push(result);
+        }
+        //divide function
+        void divide(double num1, double num2)
+        {
+
+                double result;
+                popNumbers(num1, num2);
+                if(num2 == 0) //prevents division by zero
                 {
 
                         error();
                 }
+                result = num1 / num2;
+                math.push(result);
         }
-        //Prints out the stack
-        math.print();
-        return 0;
-}
-
-
-//function definitions
-
-//add function: adds two values and pushs to stack
-void add(double num1, double num2)
-{
-
-        double result;
-        popNumbers(num1, num2);
-        result = num1 + num2;
-        math.push(result);
-}
-//subtract function: subtracts two values and pushes to stack
-void subtract(double num1, double num2)
-{
-
-        double result;
-        popNumbers(num1, num2);
-        result = num1 - num2;
-        math.push(result);
-}
-//multiply function
-void multiply(double num1, double num2)
-{
-
-        double result;
-        popNumbers(num1, num2);
-        result = num1 * num2;
-        math.push(result);
-}
-//divide function
-void divide(double num1, double num2)
-{
-
-        double result;
-        popNumbers(num1, num2);
-        if(num2 == 0) //prevents division by zero
+        //decimal function: returns true if number is decimal or false if not.
+        bool decimal(double input)
         {
 
-                error();
-        }
-        result = num1 / num2;
-        math.push(result);
-}
-//decimal function: returns true if number is decimal or false if not.
-bool decimal(double input)
-{
+                ostringstream changer;
+                string num;
+                changer << input;
+                num = changer.str();
+                int numLength = num.length();
 
-        ostringstream changer;
-        string num;
-        changer << input;
-        num = changer.str();
-        int numLength = num.length();
+                for(int i = 0; i < numLength; i++)
+                {
+                        if(num[i] == '.') //confirms number is a decimal by looking for a period . and then returns true
+                        { 
 
-        for(int i = 0; i < numLength; i++)
-        {
-                if(num[i] == '.') //confirms number is a decimal by looking for a period . and then returns true
-                { 
-
-                        return true;
+                                return true;
+                        }
                 }
+                return false;
         }
-        return false;
-}
-//exponent function
-void exponent(double num1, double num2)
-{
-
-        double result;
-        popNumbers(num1, num2);
-        if(num1 < 0 && decimal(num2))
+        //exponent function
+        void exponent(double num1, double num2)
         {
 
-                error();
+                double result;
+                popNumbers(num1, num2);
+                if(num1 < 0 && decimal(num2))
+                {
+
+                        error();
+                }
+                result = pow(num1, num2);
+                if(isinf(result))
+                {
+
+                        error();
+                }
+                math.push(result);
         }
-        result = pow(num1, num2);
-        if(isinf(result))
+
+        //function that removes the two inputed values from the stack
+        void popNumbers(double &num1, double &num2)
         {
 
-                error();
+                math.pop(num2);
+                math.pop(num1);
         }
-        math.push(result);
-}
+        //error message function
+        void error()
+        {
 
-//function that removes the two inputed values from the stack
-void popNumbers(double &num1, double &num2)
-{
-
-        math.pop(num2);
-        math.pop(num1);
-}
-//error message function
-void error()
-{
-
-        cerr << "Error: Invalid expression."<<endl;
-        exit(1);
-}
+                cerr << "Error: Invalid expression."<<endl;
+                exit(1);
+        }
