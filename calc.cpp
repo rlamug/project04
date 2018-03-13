@@ -104,10 +104,6 @@ int main()
                                 error();
                         }
                 }
-                if(math.size() >= 2){
-
-                        error();
-                }
         }
         //Prints out the stack
         math.print();
