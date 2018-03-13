@@ -104,7 +104,7 @@ int main()
                                 error();
                         }
                 }
-                if(collec.size() >= 2)
+                if(math.size() >= 2)
                 {
                         error();
                 }
@@ -112,7 +112,7 @@ int main()
                 math.print();
                 return 0;
         }
-
+}
 
         //function definitions
 
