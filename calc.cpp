@@ -104,7 +104,9 @@ int main()
                                 error();
                         }
                 }
-                if(collec.size() >= 2){
+                if(collec.size() >= 2)
+                {
+                        error();
                 }
                 //Prints out the stack
                 math.print();
