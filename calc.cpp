@@ -104,7 +104,7 @@ int main()
                                 error();
                         }
                 }
-                if(math.size() >= 2)
+                if(math.size() > 2)
                 {
                         error();
                 }
