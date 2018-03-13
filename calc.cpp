@@ -63,35 +63,35 @@ int main()
                         cin>>operation;
 
                         //operation functions
-                        if(operation == '+' && math.size() == 2)//add
+                        if(operation == '+' && math.size() >= 2)//add
                         {
 
                                 add(num1, num2);
                         }
-                        else if (operation == '-' && math.size() == 2)//subtract
+                        else if (operation == '-' && math.size() >= 2)//subtract
                         {
 
                                 subtract(num1, num2);
                         }
 
-                        else if(operation == '*' && math.size() == 2)//multiply
+                        else if(operation == '*' && math.size() >= 2)//multiply
                         {
 
                                 multiply(num1, num2);
                         }
-                        else if (operation == '/' && math.size() == 2)//divide
+                        else if (operation == '/' && math.size() >= 2)//divide
                         {
 
                                 divide(num1, num2);
                         }
 
-                        else if(operation == '^' && math.size() == 2)//exponent
+                        else if(operation == '^' && math.size() >= 2)//exponent
                         {
 
                                 exponent(num1, num2);
                         }
                         //Sends error if the stack is not large enough for operations
-                        else if (math.size() < 2 || math.size() > 2)
+                        else if (math.size() < 2)
                         {
 
                                 error();
